@@ -451,13 +451,13 @@ videos_subset = [
     [111,"dolor",0],
 ]
 
-videos = videos_subset
+#videos = videos_subset
 
 def get_videos():
     vid_selection = []
     groups_found = [] #disjunct video groups (hello, happy, ...) that have been found
 
-    p = default_p
+    p = 0
 
     #print("Trying to get %d videos." % target_n)
 
@@ -481,9 +481,13 @@ def get_videos():
         #print("Not enough videos have been found (%d/%d). Increasing p to %d." % (len(vid_selection), target_n, p+1))
         p += 1
 
-def draw_progress(updated_videos):
+def draw_progress(updated_videos, max_lines=512):
     tmp = sp.call('clear',shell=True)
+    i = 0
     for v in videos:
+        if i >= max_lines:
+            break
+
         if v in updated_videos:
             print("%3s (%13s) \033[92m%s\033[0m" % (v[0], v[1], '='*v[2] ))
         else:
@@ -492,8 +496,7 @@ def draw_progress(updated_videos):
 
 #########################################
 
-target_n = 10 #number of videos that need to be selected in total (each from a diff. category) 
-default_p = 0 #number of ratings a video can have to be considered for random selection
+target_n = 10 #number of videos that need to be selected in total (each from a diff. category) (set to 10)
 
 print("TOTAL VIDEOS:     %d" % len(videos))
 print("TOTAL CATEGORIES: 12\n")
