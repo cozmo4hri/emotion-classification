@@ -1,0 +1,7 @@
+To run the experiment on a local computer:
+
+1) open this folder (containing index.php) in a terminal window
+2) Enter this command: php -S localhost:8000
+3) Open the address specified above in any web browser (e.g. Firefox, Google Chrome)
+
+The number behind the colon is the port number. Without elevated privileges, many ports are blocked by default for security purposes. Port 8000 should work in any case.

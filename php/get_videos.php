@@ -20,7 +20,6 @@
 
     $p = 0; //Max times a video can be rated to be considered for this trial.
 
-    //echo "Trying to get $number_of_videos videos.";
     while (count($selected_videos) < $number_of_videos){
         foreach ($videos as $video){
             $video_id = intval($video[0]);

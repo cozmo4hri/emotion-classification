@@ -10,9 +10,11 @@
     //write the file to disk
     file_put_contents($file_url, $csv_data);
 
+    //===============================================
+
     /* step 2: update the number of ratings of the
     displayed videos in the video_ratings.csv file.*/
-    
+
     $data_lines = explode(PHP_EOL, $csv_data); //split string into lines
     array_shift($data_lines); //remove first line
 
@@ -29,15 +31,15 @@
         $vid_id = intval( str_replace( '"', '', explode(',', $grid_entry_line)[0] ) ); //I hate PHP
         
         $line = $file_lines[$vid_id];
-        $line_exploded = explode(',', $line);
+        $line_exploded = explode(',', $line); //explode the line into it's comma-separated parts
         $times_viewed = intval( $line_exploded[2] ) + 1; //note the +1
-        $line_exploded[2] = strval($times_viewed);
+        $line_exploded[2] = strval($times_viewed); //update the value in the line
         
-        $file_lines[$vid_id] = implode(",", $line_exploded); //update the line
+        $file_lines[$vid_id] = implode(",", $line_exploded); //update the line in the array
     }
 
-    $updated_file_str = implode(PHP_EOL, $file_lines);
-    file_put_contents($vid_ratings_url, $updated_file_str);
+    $updated_file_str = implode(PHP_EOL, $file_lines); //concatenate the lines to a big string again
+    file_put_contents($vid_ratings_url, $updated_file_str); //write the new string to the file
 
     /* What we do here is read the entire file (only 8KB, at least),
     change some lines and then write it completely from scratch.

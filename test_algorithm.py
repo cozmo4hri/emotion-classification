@@ -452,6 +452,13 @@ videos_subset = [
 ]
 
 #videos = videos_subset
+target_n = 12 #number of videos that need to be selected in total (each from a diff. category) (set to 10)
+
+print("TOTAL VIDEOS:     %d" % len(videos))
+print("TOTAL CATEGORIES: 12\n")
+min_ratings_target = 5
+min_ratings = 0
+iterations = 0
 
 def get_videos():
     vid_selection = []
@@ -463,6 +470,7 @@ def get_videos():
 
     while len(vid_selection) < target_n:
         #print("Looking at videos that have been rated max %d times" % p)
+        #random.shuffle(videos) #maybe not necessary. The issue remains that 2 consecutive have similar categories.
 
         for video in videos: 
             #Consider only those videos that have only been viewed p times before and no video of their group has been shown before
@@ -492,17 +500,11 @@ def draw_progress(updated_videos, max_lines=512):
             print("%3s (%13s) \033[92m%s\033[0m" % (v[0], v[1], '='*v[2] ))
         else:
             print("%3s (%13s) %s" % (v[0], v[1], '='*v[2] ))
-    time.sleep(.2)
+    time.sleep(.3)
 
 #########################################
 
-target_n = 10 #number of videos that need to be selected in total (each from a diff. category) (set to 10)
 
-print("TOTAL VIDEOS:     %d" % len(videos))
-print("TOTAL CATEGORIES: 12\n")
-min_ratings_target = 15
-min_ratings = 0
-iterations = 0
 while min_ratings < min_ratings_target:
     iterations+=1
 
