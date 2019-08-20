@@ -157,3 +157,23 @@ body{
     text-align: right;
     font-family: monospace;
 }
+
+p, .instructions{
+    max-width: 660px;
+    text-align: justify;
+    margin-bottom: 28px;
+}
+
+.contact-data{
+    margin-top: -20px;
+    text-align: left;
+}
+
+.contact-data td:first-child{
+    font-weight: bold;
+    padding-right: 16px;
+}
+
+.contact-data td:last-child{
+    font-family: monospace;
+}
