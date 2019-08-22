@@ -177,3 +177,17 @@ p, .instructions{
 .contact-data td:last-child{
     font-family: monospace;
 }
+
+.valencearousal-description{
+    text-align: left;
+    margin: -16px auto -6px auto;
+}
+.valencearousal-description td:first-child{
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.jspsych-display-element input[type="text"] input[type=text]{
+    width: 282px;
+    font-size: 115%;
+}

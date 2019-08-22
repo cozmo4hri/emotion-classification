@@ -1,12 +1,24 @@
 <?php
     $post_data = json_decode(file_get_contents('php://input'), true);
     $csv_data = $post_data['results'];
-    
+    $prolific_id = $post_data['prolific_id'];
+
     //step 1: save the user input into a new csv file
     $base_url = "../data/%s.csv";
-    $filename = date('Y-m-d_G:i:s'); //UTC time!
+    $filename = date('Y-m-d_G:i:s') . "_"; //UTC time!
+
+    if ( strlen($prolific_id) > 0 ){ //prolific ID provided
+        $filename .= $prolific_id;
+    } else {
+        $filename .= "internal";
+        $filename .= substr(uniqid(), 0, 16); //add random number instead
+    }
+
     $file_url = sprintf($base_url, $filename);
     
+    error_log($prolific_id);
+    error_log($filename);
+
     //write the file to disk
     file_put_contents($file_url, $csv_data);
 
