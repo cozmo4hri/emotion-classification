@@ -82,9 +82,12 @@ body.debug::before{
     height: 12px;
     border-radius: 50%;
     background: purple;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+#grid-input-pos-indicator.visible{
     opacity: .3;
     transition: opacity .2s;
-    transform: translate(-50%, -50%);
 }
 #grid-input-pos-indicator.placed{
     opacity: 1;
