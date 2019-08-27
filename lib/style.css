@@ -2,6 +2,24 @@ body{
     background: rgba(0, 0, 0, .075);
 }
 
+body.debug{
+    background: repeating-linear-gradient(
+    135deg,
+    rgba(0, 0, 0, .075),
+    rgba(0, 0, 0, .075) 15px,
+    rgba(255,0,0,.2) 15px,
+    rgba(255,0,0,.2) 30px
+    );
+}
+body.debug::before{
+    content: 'debug mode on';
+    font-family: monospace;
+    color: red;
+    font-weight: bold;
+    font-size: 120%;
+    padding: 8px;
+}
+
 .cont-button{
     border: 1px solid black;
     background: white;
