@@ -212,3 +212,11 @@ p, .instructions{
     width: 282px;
     font-size: 115%;
 }
+
+.grid-screenshot{
+    max-width: 300px;
+}
+
+p.smaller{
+    margin: 12px 0;
+}
