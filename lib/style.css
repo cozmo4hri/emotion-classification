@@ -131,6 +131,7 @@ body.debug::before{
 }
 
 .grid-input-label-right, .grid-input-label-left{
+    line-height: 16px;
     width: 26px;
 }
 
