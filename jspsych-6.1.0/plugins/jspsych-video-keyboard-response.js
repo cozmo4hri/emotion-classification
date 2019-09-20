@@ -129,7 +129,7 @@ jsPsych.plugins["video-keyboard-response"] = (function() {
         }
         var type = file_name.substr(file_name.lastIndexOf('.') + 1);
         type = type.toLowerCase();
-        video_html+='<source src="' + file_name + '" type="video/'+type+'">';   
+        video_html+='<source src="' + file_name + '" type="video/mp4">';   
       }
     }
     video_html += "</video>";
