@@ -41,6 +41,27 @@
 
             //if n videos have been found, return them:
             if (count($selected_videos) == $number_of_videos){
+
+                //update number of video ratings in file:
+                $vid_ratings_url = "../video_ratings.csv";
+                $file_str = file_get_contents($vid_ratings_url);
+
+                $file_lines = explode(PHP_EOL, $file_str);
+
+                //assume that video_id is in column 0 (*shouldn't* change)
+                foreach($selected_videos as $vid_id){
+                    
+                    $line = $file_lines[$vid_id];
+                    $line_exploded = explode(',', $line); //explode the line into it's comma-separated parts
+                    $times_viewed = intval( $line_exploded[2] ) + 1; //note the +1
+                    $line_exploded[2] = strval($times_viewed); //update the value in the line
+                    
+                    $file_lines[$vid_id] = implode(",", $line_exploded); //update the line in the array
+                }
+
+                $updated_file_str = implode(PHP_EOL, $file_lines); //concatenate the lines to a big string again
+                file_put_contents($vid_ratings_url, $updated_file_str); //write the new string to the file
+
                 echo json_encode($selected_videos);
                 exit();
             }
