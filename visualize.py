@@ -1,15 +1,12 @@
 import json
-import numpy as np
-import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-file_url = "data/sample_data.json"
-
+file_url = "sample_data.json"
 with open(file_url, 'r') as f:
     data = json.load(f)
 
-responses = []
+# responses = []
 arousal_list = []
 valence_list = []
 
@@ -18,27 +15,24 @@ for dataset in data:
     if dataset['trial_type'] != "grid-response":
         continue
     
-    response = {
-        'video_id': dataset['video_id'],
-        'valence': dataset['valence'],
-        'arousal': dataset['arousal'],
-        'confidence': dataset['confidence'],
-    }
-    responses.append(response)
+    # response = {
+    #     'video_id': dataset['video_id'],
+    #     'valence': dataset['valence'],
+    #     'arousal': dataset['arousal'],
+    #     'confidence': dataset['confidence'],
+    # }
+    # responses.append(response)
+    arousal_list.append(dataset['arousal'])
+    valence_list.append(dataset['valence'])
 
-
-for response in responses:
-    arousal_list.append(response['arousal'])
-    valence_list.append(response['valence'])
-
-print(valence_list)
 
 sns.set(style="white")
 
-x1 = pd.Series(valence_list, name="$valence$")
-x2 = pd.Series(arousal_list, name="$arousal$")
-
 # Show the joint distribution using kernel density estimation
-g = sns.jointplot(x1, x2, kind="kde", height=7, space=0, xlim=(-1,1), ylim=(-1,1))
+g = sns.jointplot(valence_list, arousal_list, kind="kde", height=7, space=0, xlim=(-1, 1), ylim=(-1, 1))
+g.set_axis_labels('x', 'y', fontsize=16)
+g.ax_joint.set_xlabel('valence')
+g.ax_joint.set_ylabel('arousal')
 
+plt.tight_layout()
 plt.show()

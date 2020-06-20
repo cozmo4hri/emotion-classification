@@ -1,7 +1,9 @@
 <?php
     /*
+    This PHP script is called when a new user takes part in the study. The goal is to choose at most 1 video per category, and choose only such videos that require more ratings by the users. At the end, all videos should have been seen by approximately the same number of participants, and each participant should see a video from a new category for each video they see. Due to balancing contraints between these two considerations, some videos will have been seen by more than the minimum required amount of participants!
+
     Algorithm draft:
-    0) p=0
+    0) let p=0
     1) select all videos that have been rated p times
     2) try to find random videos from n different categories => done
     3) if not possible, add videos to selection that have been rated ++p times
@@ -15,14 +17,17 @@
     $videos = array_map('str_getcsv', $video_file);
     array_shift($videos); //remove first line
 
-    $selected_videos = []; //videos sent to the client
-    $groups_found = []; //groups that are represented by a video already
+    $selected_videos = []; //videos that will be sent to the client at the end
+    $groups_found = []; //groups that are represented by a video already. The aim is to have no more than 1 video per category.
 
-    $p = 0; //Max times a video can be rated to be considered for this trial.
+    $p = 0; /*Max times a video can be rated to be considered for this trial. Set to 0 at first,
+    which means: Try to find videos that have never been shown to anyone before. If not enough
+    videos are found that fulfill this criteria, p is incremented by one, until enough videos 
+    have been selected for the participant. */
 
     while (count($selected_videos) < $number_of_videos){
         foreach ($videos as $video){
-            $video_id = intval($video[0]);
+            $video_id = intval($video[0]); //I miss python
             $video_group = $video[1];
             $video_times_rated = intval($video[2]);
 
@@ -48,9 +53,8 @@
 
                 $file_lines = explode(PHP_EOL, $file_str);
 
-                //assume that video_id is in column 0 (*shouldn't* change)
+                //assume that the video_id is in column 0 (*shouldn't* change)
                 foreach($selected_videos as $vid_id){
-                    
                     $line = $file_lines[$vid_id];
                     $line_exploded = explode(',', $line); //explode the line into it's comma-separated parts
                     $times_viewed = intval( $line_exploded[2] ) + 1; //note the +1
@@ -62,7 +66,7 @@
                 $updated_file_str = implode(PHP_EOL, $file_lines); //concatenate the lines to a big string again
                 file_put_contents($vid_ratings_url, $updated_file_str); //write the new string to the file
 
-                echo json_encode($selected_videos);
+                echo json_encode($selected_videos); //this sends the selected video IDs back to the client, encoded as a JSON string.
                 exit();
             }
         }

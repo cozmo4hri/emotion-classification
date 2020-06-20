@@ -25,8 +25,11 @@
     //===============================================
 
     /* step 2: update the number of ratings of the
-    displayed videos in the video_ratings.csv file.*/
-
+    displayed videos in the video_ratings.csv file.
+    
+    This is now done before the user completes the
+    validation study!*/
+    
     /*
     $data_lines = explode(PHP_EOL, $csv_data); //split string into lines
     array_shift($data_lines); //remove first line
@@ -55,6 +58,3 @@
     file_put_contents($vid_ratings_url, $updated_file_str); //write the new string to the file
 
     */
-    /* What we do here is read the entire file (only 8KB, at least),
-    change some lines and then write it completely from scratch.
-    This process could be streamlined in the future by using a DB */

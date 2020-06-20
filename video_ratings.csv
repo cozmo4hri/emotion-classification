@@ -3,7 +3,7 @@ video_id,group,times_rated
 2,ask,1
 3,ask,1
 4,ask,1
-5,ask,0
+5,ask,1
 6,ask,0
 7,ask,0
 8,ask,0
@@ -11,7 +11,7 @@ video_id,group,times_rated
 10,badword,1
 11,badword,1
 12,badword,1
-13,badword,0
+13,badword,1
 14,badword,0
 15,badword,0
 16,badword,0
@@ -19,7 +19,7 @@ video_id,group,times_rated
 18,bored,1
 19,bored,1
 20,bored,1
-21,bored,0
+21,bored,1
 22,bored,0
 23,bored,0
 24,bored,0
@@ -27,12 +27,12 @@ video_id,group,times_rated
 26,celebrat,1
 27,celebrat,1
 28,celebrat,1
-29,celebrat,0
+29,celebrat,1
 30,celebrat,0
 31,dizzy,1
 32,dizzy,1
 33,dizzy,1
-34,dizzy,0
+34,dizzy,1
 35,dizzy,0
 36,dizzy,0
 37,dizzy,0
@@ -44,7 +44,7 @@ video_id,group,times_rated
 43,fail,1
 44,fail,1
 45,fail,1
-46,fail,0
+46,fail,1
 47,fail,0
 48,fail,0
 49,fail,0
@@ -70,13 +70,13 @@ video_id,group,times_rated
 69,frustrated,1
 70,frustrated,1
 71,frustrated,1
-72,frustrated,0
+72,frustrated,1
 73,frustrated,0
 74,frustrated,0
 75,giggle,1
 76,guarddog,1
 77,guarddog,1
-78,guarddog,0
+78,guarddog,1
 79,guarddog,0
 80,guarddog,0
 81,guarddog,0
@@ -92,7 +92,7 @@ video_id,group,times_rated
 91,guarddog,0
 92,happy,1
 93,happy,1
-94,happy,0
+94,happy,1
 95,happy,0
 96,happy,0
 97,happy,0
@@ -103,7 +103,7 @@ video_id,group,times_rated
 102,happy,0
 103,happy,0
 104,hello,1
-105,hello,0
+105,hello,1
 106,hello,0
 107,hello,0
 108,hello,0
